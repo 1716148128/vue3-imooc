@@ -94,7 +94,6 @@ const loading = ref(false)
 const store = useStore()
 const loginFromRef = ref(null)
 const handlerLogin = () => {
-  console.log(loginFromRef.value)
   // 1. 进行表单校验
   loginFromRef.value.validate((valid) => {
     if (!valid) {
