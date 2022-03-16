@@ -7,6 +7,7 @@ const privateRoutes = [
   {
     path: '/user',
     component: layout,
+    redirect: '/user/manage',
     meta: {
       title: 'user',
       icon: 'personnel'
@@ -60,7 +61,7 @@ const privateRoutes = [
   {
     path: '/article',
     component: layout,
-    redirect: '/user/manage',
+    redirect: '/article/ranking',
     meta: {
       title: 'article',
       icon: 'article'

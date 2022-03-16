@@ -1,0 +1,17 @@
+// 进入过渡生效时的状态
+.breadcrumb-enter-active,
+// 离开过渡生效时的状态
+.breadcrumb-leave-active {
+  transition: all 0.5s;
+}
+// 进入过渡的开始状态
+.breadcrumb-enter-from,
+// 离开过渡生效时的状态
+.breadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(20px);
+}
+// 离开过渡生效时的状态
+.breadcrumb-leave-active {
+  position: absolute;
+}
