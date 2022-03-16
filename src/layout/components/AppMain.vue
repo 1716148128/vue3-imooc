@@ -1,11 +1,11 @@
 <template>
-  <div class="app-main">main</div>
+  <div class="app-main">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="scss">

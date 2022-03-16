@@ -1,14 +1,20 @@
 <template>
-  <div class="app-wrapper">
+  <div
+    class="app-wrapper"
+    :class="[$store.getters.sidebarOpened ? 'openSidebar' : 'hideSidebar']"
+  >
     <!-- 左侧 menu -->
-    <sidebar class="sidebar-container" :style="{backgroundColor: variables.menuBg}"></sidebar>
+    <sidebar
+      class="sidebar-container"
+      :style="{ backgroundColor: variables.menuBg }"
+    ></sidebar>
     <div class="main-container">
       <div class="fixed-header">
         <!-- 顶部 navbar -->
         <navbar></navbar>
       </div>
-        <!-- 内容区 -->
-        <app-main></app-main>
+      <!-- 内容区 -->
+      <app-main></app-main>
     </div>
   </div>
 </template>
@@ -39,5 +45,10 @@ import {} from 'vue'
   right: 0;
   z-index: 9;
   width: calc(100% - #{$sideBarWidth});
+  transition: width #{$sidebarDuration};
+}
+
+.hideSidebar .fixed-header {
+  width: calc(100% - #{$hideSideBarWidth});
 }
 </style>
