@@ -11,6 +11,7 @@ const getters = {
   },
   userInfo: state => state.user.userInfo,
   cssVar: state => variables,
-  sidebarOpened: state => state.app.sidebarOpened
+  sidebarOpened: state => state.app.sidebarOpened,
+  language: state => state.app.language
 }
 export default getters

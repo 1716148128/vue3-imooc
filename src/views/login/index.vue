@@ -7,7 +7,8 @@
       ref="loginFromRef"
     >
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <lang-select class="lang-select"></lang-select>
       </div>
       <!-- username -->
       <el-form-item prop="username">
@@ -44,28 +45,32 @@
         style="width: 100%; margin-bottom: 30px"
         @click="handlerLogin"
         :loading="loading"
-        >登录</el-button
+        >{{ $t('msg.login.loginBtn') }}</el-button
       >
+      <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
 
 <script setup>
+import LangSelect from '@/layout/components/LangSelect'
 import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
+import { useI18n } from 'vue-i18n'
 // form 表单数据源
 const loginForm = ref({
   username: 'super-admin',
   password: '123456'
 })
 // 验证规则
+const i18n = useI18n()
 const loginRules = ref({
   username: [
     {
       required: true,
       trigger: 'blur',
-      message: '用户名为必填项'
+      message: i18n.t('msg.login.usernameRule')
     }
   ],
   password: [
@@ -95,7 +100,7 @@ const store = useStore()
 const loginFromRef = ref(null)
 const handlerLogin = () => {
   // 1. 进行表单校验
-  loginFromRef.value.validate((valid) => {
+  loginFromRef.value.validate(valid => {
     if (!valid) {
       return
     }
@@ -108,7 +113,7 @@ const handlerLogin = () => {
         loading.value = false
         // 3. 进行登录后处理
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err)
         loading.value = false
       })
@@ -156,6 +161,12 @@ $cursor: #fff;
         caret-color: $cursor;
       }
     }
+
+    .tips {
+      font-size: 16px;
+      color: #fff;
+      line-height: 24px;
+    }
   }
 
   .svg-container {
@@ -173,7 +184,7 @@ $cursor: #fff;
       color: $light_gray;
       margin: 0px auto 40px auto;
       text-align: center;
-      font-wiight: bold;
+      font-weight: bold;
     }
   }
 
@@ -185,6 +196,17 @@ $cursor: #fff;
     cursor: pointer;
     // 防止选中文本
     user-select: none;
+  }
+
+  ::v-deep .lang-select {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    background-color: #fff;
+    font-size: 22px;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
   }
 }
 </style>
