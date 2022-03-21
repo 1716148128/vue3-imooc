@@ -2,7 +2,7 @@
   <div class="">
     <div class="login-container">
       <el-avatar
-        size="logoHeight"
+        :size="logoHeight"
         shape="square"
         src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
       ></el-avatar>
@@ -36,6 +36,10 @@ const logoHeight = 44
     line-height: 50px;
     font-size: 16px;
     white-space: nowrap;
+  }
+
+  .el-avatar {
+    --el-avatar-background-color: none;
   }
 }
 </style>

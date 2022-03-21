@@ -3,22 +3,23 @@
     <hamburger class="hamburger-container"></hamburger>
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <lang-select class="right-menu-item hover-effect"></lang-select>
       <!-- 头像 -->
-      <el-dropdown class="avatar-container" taigger="click">
+      <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar
             shape="square"
-            :size="40"
+            size="large"
             :src="$store.getters.userInfo.avatar"
           ></el-avatar>
           <i class="el-icon-s-tools"></i>
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
-            <router-like to="/">
+            <router-link to="/">
               <el-dropdown-item>{{ $t(`msg.navBar.home`) }}</el-dropdown-item>
-            </router-like>
+            </router-link>
             <el-dropdown-item divided @click="logout">
               {{ $t(`msg.navBar.logout`) }}
             </el-dropdown-item>
@@ -35,6 +36,7 @@ import { useStore } from 'vuex'
 import Hamburger from './hamburger/index.vue'
 import Breadcrumb from './Breadcrumb/index.vue'
 import LangSelect from './LangSelect/index.vue'
+import ThemePicker from './ThemeSelect/index.vue'
 
 const store = useStore()
 const logout = () => {

@@ -30,7 +30,6 @@ const getBreadcrumData = () => {
   breadcrumData.value = route.matched.filter(
     item => item.meta && item.meta.title
   )
-  console.log(breadcrumData.value)
 }
 
 // 监听路由变化

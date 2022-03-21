@@ -5,8 +5,10 @@
     @command="handleSetLanguage"
   >
     <div>
-      <el-tooltip content="国际化" :effect="effect">
-        <svg-icon icon="language"></svg-icon>
+      <el-tooltip :content="$t('msg.guide.langTitle')" :effect="effect">
+        <div>
+          <svg-icon icon="language"></svg-icon>
+        </div>
       </el-tooltip>
     </div>
     <template #dropdown>
@@ -34,6 +36,8 @@ defineProps({
     default: 'dark',
     validator: function (value) {
       return ['drak', 'light'].indexOf(value) !== -1
+        ? ['drak', 'light'].indexOf(value)
+        : 'dark'
     }
   }
 })

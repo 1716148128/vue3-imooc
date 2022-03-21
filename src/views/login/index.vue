@@ -47,7 +47,7 @@
         :loading="loading"
         >{{ $t('msg.login.loginBtn') }}</el-button
       >
-      <div class="tips" v-html="$t('msg.login.desc')"></div>
+      <div v-html="$t('msg.login.desc')" class="tips"></div>
     </el-form>
   </div>
 </template>
@@ -58,6 +58,7 @@ import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
+
 // form 表单数据源
 const loginForm = ref({
   username: 'super-admin',
@@ -70,7 +71,7 @@ const loginRules = ref({
     {
       required: true,
       trigger: 'blur',
-      message: i18n.t('msg.login.usernameRule')
+      message: () => i18n.t('msg.login.usernameRule')
     }
   ],
   password: [
