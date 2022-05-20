@@ -5,6 +5,7 @@
   >
     <!-- 左侧 menu -->
     <sidebar
+      id="guide-sidebar"
       class="sidebar-container"
       :style="{ backgroundColor: $store.getters.cssVar.menuBg }"
     ></sidebar>
@@ -13,7 +14,7 @@
         <!-- 顶部 navbar -->
         <navbar></navbar>
         <!-- tags -->
-        <tags-view></tags-view>
+        <tags-view id="guide-tags"></tags-view>
       </div>
       <!-- 内容区 -->
       <app-main></app-main>

@@ -1,6 +1,10 @@
 <template>
   <div :class="{ show: isShow }" class="header-search">
-    <div @click.stop="onShowClick" style="display: inline-block">
+    <div
+      @click.stop="onShowClick"
+      style="display: inline-block"
+      id="guide-search"
+    >
       <svg-icon class-name="search-icon" icon="search"></svg-icon>
     </div>
     <!-- filterable: 实现搜索词匹配

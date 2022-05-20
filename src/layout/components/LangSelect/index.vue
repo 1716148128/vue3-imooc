@@ -7,7 +7,7 @@
     <div>
       <el-tooltip :content="$t('msg.guide.langTitle')" :effect="effect">
         <div>
-          <svg-icon icon="language"></svg-icon>
+          <svg-icon id="guide-lang" icon="language"></svg-icon>
         </div>
       </el-tooltip>
     </div>

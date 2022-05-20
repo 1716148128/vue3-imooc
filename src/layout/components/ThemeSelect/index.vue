@@ -8,7 +8,7 @@
     <!-- 图标 -->
     <div>
       <el-tooltip :content="$t('msg.theme.themeChange')">
-        <div>
+        <div id="guide-theme">
           <svg-icon icon="change-theme"></svg-icon>
         </div>
       </el-tooltip>
