@@ -17,13 +17,10 @@ export const writeNewStyle = newStyle => {
 export const generateNewStyle = async parimartColor => {
   // 1. 根据主色生成色值表
   const colors = generateColors(parimartColor)
-  console.log(colors)
   // 2. 获取当前 element-plus 的默认样式表，并且把需要进行替换的色值打上标记
   let cssText = await getOriginalStyle()
-  console.log(cssText)
   // 3. 遍历生成的色值表，在 默认样式表 进行全局替换
   Object.keys(colors).forEach(key => {
-    console.log(colors[key])
     cssText = cssText.replace(
       new RegExp('(:|\\s+)' + key, 'g'),
       '$1' + colors[key]
@@ -39,9 +36,7 @@ export const generateColors = primary => {
   }
 
   Object.keys(formula).forEach(key => {
-    console.log(key)
     const value = formula[key].replace(/primary/g, primary)
-    console.log(value)
     colors[key] = '#' + rgbHex(color.convert(value))
   })
   return colors

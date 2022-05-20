@@ -35,6 +35,7 @@ const isExternal = computed(() => external(props.icon))
  * 外部图标样式
  */
 const styleExternalIcon = computed(() => ({
+  // mask 图片遮罩
   mask: `url(${props.icon}) no-repeat 50% 50%`,
   '-webkit-mask': `url(${props.icon}) no-repeat 50% 50%`
 }))

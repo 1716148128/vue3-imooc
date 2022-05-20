@@ -10,7 +10,7 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   config => {
-    config.headers.icode = '0FC080A592CE9284'
+    config.headers.icode = '0DFCBCCEE2DE2664'
     if (store.getters.token) {
       // token超时 退出登录
       if (isCheckTimeout()) {
