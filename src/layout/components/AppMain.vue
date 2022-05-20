@@ -13,23 +13,9 @@
 <script setup>
 import { watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { isTags } from '@/utils/tags'
+import { isTags, getTitle, tagslanguage } from '@/utils/tags'
 import { useStore } from 'vuex'
-import { generateTitle, watchSwitchLang } from '@/utils/i18n'
-
-/**
- * 生成title
- */
-const getTitle = route => {
-  let title = ''
-  if (!route.meta) {
-    const pathArr = route.path.split('/')
-    title = pathArr[pathArr.length - 1]
-  } else {
-    title = generateTitle(route.meta.title)
-  }
-  return title
-}
+import { watchSwitchLang } from '@/utils/i18n'
 
 const store = useStore()
 const route = useRoute()
@@ -37,7 +23,7 @@ watch(
   route,
   (to, from) => {
     // 并不是所有的路由都需要保存的
-    if (!isTags()) return
+    if (isTags(to.path)) return
     const { fullPath, meta, name, params, path, query } = to
     store.commit('app/addTagsViewList', {
       fullPath,
@@ -54,18 +40,7 @@ watch(
   }
 )
 
-watchSwitchLang(() => {
-  console.log(store.getters.tagsViewList)
-  store.getters.tagsViewList.forEach((route, index) => {
-    store.commit('app/changeTagsView', {
-      index,
-      tag: {
-        ...route,
-        title: getTitle(route)
-      }
-    })
-  })
-})
+watchSwitchLang(tagslanguage(store))
 </script>
 
 <style lang="scss">

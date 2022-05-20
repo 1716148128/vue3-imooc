@@ -29,6 +29,8 @@ import { computed, defineProps } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import { ElMessage } from 'element-plus'
+import { watchSwitchLang } from '@/utils/i18n'
+import { tagslanguage } from '@/utils/tags'
 
 defineProps({
   effect: {
@@ -55,6 +57,8 @@ const handleSetLanguage = lang => {
   // 提示
   ElMessage.success(i18n.t('msg.toast.switchLangSuccess'))
 }
+
+watchSwitchLang(tagslanguage(store))
 </script>
 
 <style lang="scss" scoped></style>

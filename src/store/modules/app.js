@@ -36,7 +36,7 @@ export default {
       setItem(TAGS_VIEW, state.tagsViewList)
     },
     /**
-     *
+     * tag 右键功能
      * @param { type: 'other' || 'right' || 'index' } payload
      */
     removeTagsView(state, payload) {
