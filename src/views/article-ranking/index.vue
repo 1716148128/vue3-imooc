@@ -13,7 +13,7 @@
       </div>
     </el-card>
     <el-card>
-      <el-table ref="tableRef" :data="tableData" border>
+      <el-table ref="tableRef" :data="tableData" border row-key="_id">
         <el-table-column
           v-for="(item, index) in tableColumns"
           :key="index"
@@ -24,7 +24,7 @@
             >{{ $filters.relativeTime(row.publicDate) }}
           </template>
           <template v-else-if="item.prop === 'action'" #default="{ row }">
-            <el-button type="primary" size="mini" @click="onshowClick(row)">{{
+            <el-button type="primary" size="mini" @click="onShowClick(row)">{{
               $t('msg.article.show')
             }}</el-button>
             <el-button type="danger" size="mini" @click="onRemoveClick(row)">{{
@@ -49,10 +49,11 @@
 </template>
 
 <script setup>
-import { ref, onActivated } from 'vue'
+import { ref, onActivated, onMounted } from 'vue'
 import { getArticleList } from '@/api/article'
 import { watchSwitchLang } from '@/utils/i18n'
 import { dynamicData, selectDynamicLable, tableColumns } from './dynamic/index'
+import { tableRef, initSortable } from './sortable'
 
 // 数据相关
 const tableData = ref([])
@@ -72,6 +73,11 @@ getListData()
 watchSwitchLang(getListData)
 onActivated(getListData)
 
+// 初始化 sortable
+onMounted(() => {
+  initSortable(tableData, getListData)
+})
+
 // size 改变
 const handleSizeChange = currentSize => {
   size.value = currentSize
@@ -85,10 +91,9 @@ const handleCurrentChange = currentPage => {
 }
 
 // 点击查看
-// const onShowClick = row => {
-// }
+const onShowClick = row => {}
 // 点击删除
-// const onRemoveClick = row => {}
+const onRemoveClick = row => {}
 </script>
 
 <style lang="scss" scoped>
@@ -114,5 +119,11 @@ const handleCurrentChange = currentPage => {
     margin-top: 20px;
     text-align: center;
   }
+}
+
+::v-deep .sortable-ghost {
+  opacity: 0.6;
+  color: #fff;
+  background: #304156;
 }
 </style>
