@@ -60,6 +60,13 @@
       margin-left: -2px;
     }
 
+    // menu
+    .el-menu--collapse {
+      .svg-icon {
+        margin-right: 0;
+      }
+    }
+
     .el-menu {
       border: none;
       height: 100%;

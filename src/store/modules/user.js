@@ -55,8 +55,9 @@ export default {
     /**
      * 退出登录
      */
-    logout() {
+    logout(context) {
       resetRouter()
+      context.rootState.app.tagsViewList = []
       this.commit('user/setToken', '')
       this.commit('user/setUserInfo', {})
       removeAllItem()

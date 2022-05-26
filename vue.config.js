@@ -32,5 +32,13 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+
+    // 新增规则，处理 element-plus 2 错误
+    config.module
+      .rule('element-plus')
+      .test('/.mjs$/')
+      .type('javascript/auto')
+      .include.add(/node_module/)
+      .end()
   }
 }

@@ -28,7 +28,7 @@ router.beforeEach(async (to, from, next) => {
         // 添加完动态路由之后，需要进行以此主动跳转
         // next(to.next)
         // 如果 addRoute 并未完成，路由守卫会一层一层的执行执行，直到 addRoute 完成，找到对应的路由
-        next({ ...to, replace: true })
+        return next({ ...to, replace: true })
       }
       next()
     }

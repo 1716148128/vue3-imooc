@@ -37,7 +37,7 @@ export const publicRoutes = [
         component: () => import('@/views/profile/index'),
         meta: {
           title: 'profile',
-          icon: 'el-icon-user'
+          icon: 'personnel'
         }
       },
       // 404
